@@ -1,0 +1,28 @@
+{
+	"name": "John Doe",
+	"email": "john@doe.com",
+	"user_type": "personal",
+	"product_price": 100,
+	"product_list": [
+		"tv show",
+		"tv series",
+		"films",
+		"email_account"
+	],
+	"status_user": 1
+}
+
+
+{
+	"name": "I Don't Know Company",
+	"email": "idontknow@company.com",
+	"user_type": "juridical",
+	"product_price": 500,
+	"product_list": [
+		"tv show",
+		"tv series",
+		"films",
+		"email_account"
+	],
+	"status_user": 1
+}
