@@ -19,7 +19,7 @@ class DiscountJuridical(object):
         self.__next_discount = next_discount
 
     def calculate(self, user):
-        if user.user_type == 'juridical':
+        if user.user_type == 'juridical' and user.status == 1:
             return user.product_price * 0.03
         else:
             return self.__next_discount.calculate(user)
