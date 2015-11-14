@@ -37,7 +37,7 @@ class DiscountJuridicalWithStatus2(object):
             return self.__next_discount.calculate(user)
 
 
-class NoneDiscount(object):
+class DiscountNone(object):
 
     def calculate(self, user):
         return 0

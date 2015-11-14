@@ -50,17 +50,17 @@ class ICMS(Rate):
 
     @ipvx
     def calculate(self, user):
-        return user.product_price * 0.1
+        return user.product_price * 0.1 + self.calc_other_rate(user)
 
 
 class ICPP(Rate):
     def calculate(self, user):
-        return user.product_price * 0.3
+        return user.product_price * 0.3 + self.calc_other_rate(user)
 
 
 class ISS(Rate):
     def calculate(self, user):
-        return user.product_price * 0.5
+        return user.product_price * 0.5 + self.calc_other_rate(user)
 
 
 class IPCA(RateWithCondition):
@@ -69,10 +69,10 @@ class IPCA(RateWithCondition):
         return user.product_price > 100
 
     def max_rate(self, user):
-        return user.product_price * 0.25
+        return user.product_price * 0.25 + self.calc_other_rate(user)
 
     def min_rate(self, user):
-        return user.product_price * 0.05
+        return user.product_price * 0.05 + self.calc_other_rate(user)
 
 
 class IKCV(RateWithCondition):
@@ -81,7 +81,7 @@ class IKCV(RateWithCondition):
         return user.product_price > 100
 
     def max_rate(self, user):
-        return user.product_price * 0.15
+        return user.product_price * 0.15 + self.calc_other_rate(user)
 
     def min_rate(self, user):
-        return user.product_price * 0.02
+        return user.product_price * 0.02 + self.calc_other_rate(user)

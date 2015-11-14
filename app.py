@@ -25,6 +25,21 @@ def calculate_rates():
     return jsonify(name=user.name, rates=rates), 200
 
 
+@app.route("/calculate_join_rates", methods=['POST'])
+def calculate_join_rates():
+    if not request.json:
+        abort(400)
+    user = User(request)
+    rates_joined = []
+    icms = CalculateRate().calculate(user, 'ICMS')
+    icpp = CalculateRate().calculate(user, 'ICPP')
+    iss = CalculateRate().calculate(user, 'ISS')
+    ipca = CalculateRate().calculate(user, 'IPCA')
+    rates_joined.append({'ICMS with ICPP': icms + icpp})
+    rates_joined.append({'ISS with IPCA': iss + ipca})
+    return jsonify(name=user.name, rates_joined=rates_joined), 200
+
+
 @app.route("/calculate_discounts", methods=['POST'])
 def calculate_discounts():
     if not request.json:
@@ -35,4 +50,4 @@ def calculate_discounts():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
