@@ -13,7 +13,7 @@ class DiscountPersonal(object):
             return self.__next_discount.calculate(user)
 
 
-class DiscountJuridical(object):
+class DiscountJuridicalWithStatus1(object):
 
     def __init__(self, next_discount):
         self.__next_discount = next_discount
