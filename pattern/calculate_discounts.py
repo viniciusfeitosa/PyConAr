@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
-from discounts import DiscountPersonal, DiscountJuridical, \
-    DiscountJuridicalWithStatus2, DiscountNone
+from discounts import DiscountPersonal, \
+    DiscountJuridicalWithStatus1, \
+    DiscountJuridicalWithStatus2, \
+    DiscountJuridicalWithStatus3, DiscountNone
 
 
 class CalculateDiscount(object):
 
     def calculate(self, user):
         return DiscountPersonal(
-            DiscountJuridical(
+            DiscountJuridicalWithStatus1(
                 DiscountJuridicalWithStatus2(
-                    DiscountNone))).calculate(user)
+                    DiscountJuridicalWithStatus3(
+                        DiscountNone)))).calculate(user)
