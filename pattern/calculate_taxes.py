@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-class CalculateRate(object):
+class CalculateTax(object):
 
     def calculate(self, user, rate):
         return rate.calculate(user)

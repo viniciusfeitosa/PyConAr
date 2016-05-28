@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 
 
-class CalculateRate(object):
+class CalculateTax(object):
 
-    def calculate(self, user, rate):
-        if rate == 'ICMS':
+    def calculate(self, user, tax):
+        if tax == 'ICMS':
             return user.product_price * 0.1
-        elif rate == 'ICPP':
+        elif tax == 'ICPP':
             return user.product_price * 0.3
-        elif rate == 'ISS':
+        elif tax == 'ISS':
             return user.product_price * 0.5
-        elif rate == 'IPCA':
+        elif tax == 'IPCA':
             if user.product_price > 100:
                 return user.product_price * 0.25
             else:
                 return user.product_price * 0.05
-        elif rate == 'IKCV':
+        elif tax == 'IKCV':
             if user.product_price > 100:
                 return user.product_price * 0.15
             else:

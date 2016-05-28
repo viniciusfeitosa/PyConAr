@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from user import User
-from calculate_rates import CalculateRate
+from calculate_taxes import CalculateTax
 from calculate_discounts import CalculateDiscount
 from flask import Flask, request, jsonify, abort
 app = Flask(__name__)
@@ -11,33 +11,33 @@ def hello():
     return "hello world"
 
 
-@app.route("/calculate_rates", methods=['POST'])
-def calculate_rates():
+@app.route("/calculate_tax", methods=['POST'])
+def calculate_tax():
     if not request.json:
         abort(400)
     user = User(request)
-    rates = []
-    rates.append({'ICMS': CalculateRate().calculate(user, 'ICMS')})
-    rates.append({'ICPP': CalculateRate().calculate(user, 'ICPP')})
-    rates.append({'ISS': CalculateRate().calculate(user, 'ISS')})
-    rates.append({'IPCA': CalculateRate().calculate(user, 'IPCA')})
-    rates.append({'IKCV': CalculateRate().calculate(user, 'IKCV')})
-    return jsonify(name=user.name, rates=rates), 200
+    taxes = []
+    taxes.append({'ICMS': CalculateTax().calculate(user, 'ICMS')})
+    taxes.append({'ICPP': CalculateTax().calculate(user, 'ICPP')})
+    taxes.append({'ISS': CalculateTax().calculate(user, 'ISS')})
+    taxes.append({'IPCA': CalculateTax().calculate(user, 'IPCA')})
+    taxes.append({'IKCV': CalculateTax().calculate(user, 'IKCV')})
+    return jsonify(name=user.name, taxes=taxes), 200
 
 
-@app.route("/calculate_join_rates", methods=['POST'])
-def calculate_join_rates():
+@app.route("/calculate_join_tax", methods=['POST'])
+def calculate_join_tax():
     if not request.json:
         abort(400)
     user = User(request)
-    rates_joined = []
-    icms = CalculateRate().calculate(user, 'ICMS')
-    icpp = CalculateRate().calculate(user, 'ICPP')
-    iss = CalculateRate().calculate(user, 'ISS')
-    ipca = CalculateRate().calculate(user, 'IPCA')
-    rates_joined.append({'ICMS with ICPP': icms + icpp})
-    rates_joined.append({'ISS with IPCA': iss + ipca})
-    return jsonify(name=user.name, rates_joined=rates_joined), 200
+    taxes_joined = []
+    icms = CalculateTax().calculate(user, 'ICMS')
+    icpp = CalculateTax().calculate(user, 'ICPP')
+    iss = CalculateTax().calculate(user, 'ISS')
+    ipca = CalculateTax().calculate(user, 'IPCA')
+    taxes_joined.append({'ICMS with ICPP': icms + icpp})
+    taxes_joined.append({'ISS with IPCA': iss + ipca})
+    return jsonify(name=user.name, taxes_joined=taxes_joined), 200
 
 
 @app.route("/calculate_discounts", methods=['POST'])

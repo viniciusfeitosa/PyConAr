@@ -2,7 +2,7 @@
 from abc import ABCMeta, abstractmethod
 
 
-class Rate(object):
+class Tax(object):
     def __init__(self, other_rate=None):
         self.__other_rate = other_rate
 
@@ -17,7 +17,7 @@ class Rate(object):
         pass
 
 
-class RateWithCondition(Rate):
+class TaxWithCondition(Tax):
     __metaclass__ = ABCMeta
 
     def calculate(self, user):
@@ -46,24 +46,24 @@ def ipvx(func):
     return wrapper
 
 
-class ICMS(Rate):
+class ICMS(Tax):
 
     @ipvx
     def calculate(self, user):
         return user.product_price * 0.1 + self.calc_other_rate(user)
 
 
-class ICPP(Rate):
+class ICPP(Tax):
     def calculate(self, user):
         return user.product_price * 0.3 + self.calc_other_rate(user)
 
 
-class ISS(Rate):
+class ISS(Tax):
     def calculate(self, user):
         return user.product_price * 0.5 + self.calc_other_rate(user)
 
 
-class IPCA(RateWithCondition):
+class IPCA(TaxWithCondition):
 
     def use_max_rate(self, user):
         return user.product_price > 100
@@ -75,7 +75,7 @@ class IPCA(RateWithCondition):
         return user.product_price * 0.05 + self.calc_other_rate(user)
 
 
-class IKCV(RateWithCondition):
+class IKCV(TaxWithCondition):
 
     def use_max_rate(self, user):
         return user.product_price > 100
