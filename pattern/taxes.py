@@ -75,7 +75,7 @@ class IPCA(TaxWithCondition):
         return user.product_price * 0.05 + self.calc_other_rate(user)
 
 
-class IKCV(TaxWithCondition):
+class XIMBINHA(TaxWithCondition):
 
     def use_max_rate(self, user):
         return user.product_price > 100

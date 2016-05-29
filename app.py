@@ -21,7 +21,7 @@ def calculate_tax():
     taxes.append({'ICPP': CalculateTax().calculate(user, 'ICPP')})
     taxes.append({'ISS': CalculateTax().calculate(user, 'ISS')})
     taxes.append({'IPCA': CalculateTax().calculate(user, 'IPCA')})
-    taxes.append({'IKCV': CalculateTax().calculate(user, 'IKCV')})
+    taxes.append({'XIMBINHA': CalculateTax().calculate(user, 'XIMBINHA')})
     return jsonify(name=user.name, taxes=taxes), 200
 
 

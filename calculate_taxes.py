@@ -15,7 +15,7 @@ class CalculateTax(object):
                 return user.product_price * 0.25
             else:
                 return user.product_price * 0.05
-        elif tax == 'IKCV':
+        elif tax == 'XIMBINHA':
             if user.product_price > 100:
                 return user.product_price * 0.15
             else:

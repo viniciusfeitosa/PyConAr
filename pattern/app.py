@@ -2,7 +2,7 @@
 from user import User
 from calculate_taxes import CalculateTax
 from calculate_discounts import CalculateDiscount
-from taxes import ICMS, ICPP, ISS, IPCA, IKCV
+from taxes import ICMS, ICPP, ISS, IPCA, XIMBINHA
 from flask import Flask, request, jsonify, abort
 app = Flask(__name__)
 
@@ -27,7 +27,7 @@ def calculate_taxes():
     taxes.append(
         {'IPCA': CalculateTax().calculate(user, IPCA())})
     taxes.append(
-        {'IKCV': CalculateTax().calculate(user, IKCV())})
+        {'XIMBINHA': CalculateTax().calculate(user, XIMBINHA())})
     return jsonify(name=user.name, taxes=taxes), 200
 
 
